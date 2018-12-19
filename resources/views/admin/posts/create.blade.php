@@ -1,6 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
+
+  @if(count($errors) > 0 )
+    <ul class="list-group">
+      @foreach($errors->all() as $error)
+        <li class="list-group-item text-danger">
+          {{ $error }}
+        </li>
+      @endforeach
+    </ul>
+  @endif
+
   <div class="div panel panel-default">
     <div class="panel-heading">
       <h4>Create a new post</h4>
@@ -8,7 +19,7 @@
     <br>
 
     <div class="panel-body">
-      <form action="{{ route('post.store') }}" method="post">
+      <form action="{{ route('post.store') }}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="form-group">
           <label for="title">Title</label>

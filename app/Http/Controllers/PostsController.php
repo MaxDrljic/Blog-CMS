@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use App\Category;
 use Illuminate\Http\Request;
 
@@ -41,6 +42,21 @@ class PostsController extends Controller
             'content'     => 'required',
             'category_id' => 'required'
         ]);
+
+        $featured = $request->featured;
+
+        $featured_new_name = time().$featured->getClientOriginalName();
+
+        $featured->move('uploads/posts', $featured_new_name);
+
+        $post = Post::create([
+            'title'         => $request->title,
+            'content'       => $request->content,
+            'featured'      => 'uploads/posts' . $featured_new_name,
+            '$category_id'  => $request->category_id
+        ]);
+
+        toastr()->success('success', 'You successfully created a post!');
     }
 
     /**

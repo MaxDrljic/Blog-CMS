@@ -27,7 +27,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
         'as'   => 'post.create'
     ]);
     
-    Route::get('/post/store', [
+    Route::post('/post/store', [
         'uses' => 'PostsController@store',
         'as'   => 'post.store'
     ]);

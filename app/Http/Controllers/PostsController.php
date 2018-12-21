@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use App\Category;
+use Session;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
@@ -52,11 +53,14 @@ class PostsController extends Controller
         $post = Post::create([
             'title'         => $request->title,
             'content'       => $request->content,
-            'featured'      => 'uploads/posts' . $featured_new_name,
-            '$category_id'  => $request->category_id
+            'featured'      => 'uploads/posts/' . $featured_new_name,
+            'category_id'   => $request->category_id
         ]);
 
-        toastr()->success('success', 'You successfully created a post!');
+        /* toastr()->success('success', 'You successfully created a post!'); */
+        Session::flash('success', 'Post created successfully');
+
+        dd($request->all());
     }
 
     /**

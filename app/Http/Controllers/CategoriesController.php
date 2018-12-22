@@ -45,7 +45,7 @@ class CategoriesController extends Controller
         $category->name = $request->name;
         $category->save();
 
-        toastr()->success('success', 'You successfully created a category!');
+        toastr()->success('You successfully created a category!');
 
         return redirect()->route('categories');
         
@@ -90,7 +90,7 @@ class CategoriesController extends Controller
 
         $category->save();
 
-        toastr()->success('success', 'You successfully updated a category!');
+        toastr()->success('You successfully updated a category!');
 
         return redirect()->route('categories');
     }

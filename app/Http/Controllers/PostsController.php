@@ -26,6 +26,15 @@ class PostsController extends Controller
      */
     public function create()
     {
+        $categories = Category::all();
+
+        if($categories->count() == 0)
+        {
+            toastr()->info('You must have some categories before attempting to create a post.');
+
+            return redirect()->back();
+        }
+
         return view('admin.posts.create')->with('categories', Category::all());
     }
 
@@ -57,8 +66,7 @@ class PostsController extends Controller
             'category_id'   => $request->category_id
         ]);
 
-        /* toastr()->success('success', 'You successfully created a post!'); */
-        Session::flash('success', 'Post created successfully');
+        toastr()->success('success', 'You successfully created a post!');
 
         dd($request->all());
     }

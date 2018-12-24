@@ -37,6 +37,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
         'as'   => 'category.create'
     ]);
 
+    Route::get('/posts', [
+        'uses' => 'PostsController@index',
+        'as'   => 'posts'
+    ]);
+
     Route::get('/categories', [
         'uses' => 'CategoriesController@index',
         'as'   => 'categories'

@@ -114,6 +114,12 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+
+        $post->delete();
+
+        toastr()->success('The post was moved to trash!');
+
+        return redirect()->back();
     }
 }

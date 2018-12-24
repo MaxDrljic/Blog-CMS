@@ -123,9 +123,22 @@ class PostsController extends Controller
         return redirect()->back();
     }
 
-    public function trashed() {
+    public function trashed() 
+    {
         $posts = Post::onlyTrashed()->get();
         
         return view('admin.posts.trashed')->with('posts', $posts);
+    }
+
+    public function kill($id)
+    {
+        // first() - As soon as you find one instance, take it and stop
+        $post = Post::withTrashed()->where('id', $id)->first();
+
+        $post->forceDelete();
+
+        toastr()->success('The post was deleted permanetly');
+
+        return redirect()->back();
     }
 }

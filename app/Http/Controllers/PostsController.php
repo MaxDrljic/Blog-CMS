@@ -137,8 +137,19 @@ class PostsController extends Controller
 
         $post->forceDelete();
 
-        toastr()->success('The post was deleted permanetly');
+        toastr()->success('The post was deleted permanetly!');
 
         return redirect()->back();
+    }
+
+    public function restore($id)
+    {
+        $post = Post::withTrashed()->where('id', $id)->first();
+
+        $post->restore();
+
+        toastr()->success('The post was successfully restored!');
+
+        return redirect()->route('posts');
     }
 }

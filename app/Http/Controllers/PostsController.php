@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Session;
 use App\Post;
 use App\Category;
-use Session;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
@@ -91,7 +91,9 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+
+        return view('admin.posts.edit')->with('post', $post)->with('categories', Category::all());
     }
 
     /**
@@ -103,7 +105,34 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'title'         => 'required',
+            'content'       => 'required',
+            'category_id'   => 'required'
+        ]);
+
+        $post = Post::find($id);
+
+        if($request->hasFile('featured'))
+        {
+            $featured = $request->featured;
+
+            $featured_new_name = time() . $featured->getClientOriginalName();
+
+            $featured->move('uploads/posts', $featured_new_name);
+
+            $post->featured = 'uploads/posts/' . $featured_new_name;
+        }
+
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->category_id = $request->category_id;
+
+        $post->save();
+
+        toastr()->success('Post updated successfully!');
+
+        return redirect()->route('posts');
     }
 
     /**

@@ -9,6 +9,16 @@ use Illuminate\Http\Request;
 class UsersController extends Controller
 {
     /**
+     * Any user who is not an administrator,
+     * is not able to access anything from the
+     * UsersController
+     */
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

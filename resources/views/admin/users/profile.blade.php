@@ -11,7 +11,7 @@
     <br>
 
     <div class="card-body">
-      <form action="{{ route('user.profile.update') }}" method="post">
+      <form action="{{ route('user.profile.update') }}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="form-group">
           <label for="name">Username</label>

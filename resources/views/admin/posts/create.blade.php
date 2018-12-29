@@ -46,9 +46,9 @@
           @endforeach
         </div>
         <div class="form-group">
-            <label for="content">Content</label>
-            <textarea name="content" id="content" cols="5" rows="5" class="form-control"></textarea>
-          </div>
+          <label for="content">Content</label>
+          <textarea name="content" id="content" cols="5" rows="5" class="form-control"></textarea>
+        </div>
 
           <div class="form-group">
             <div class="text-center">
@@ -58,4 +58,19 @@
       </form>
     </div>
   </div>
+@stop
+
+@section('styles')
+  <!-- summernote.css -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
+@stop
+
+@section('scripts')
+  <!-- summernote.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
+  <script type="text/javascript">
+    $('#content').summernote({
+      height: 100,
+    });
+  </script>
 @stop

@@ -47,7 +47,7 @@
         </div>
         <div class="form-group">
           <label for="content">Content</label>
-          <textarea name="content" id="content" cols="5" rows="5" class="form-control"></textarea>
+          <textarea name="content" id="content" cols="5" rows="5" class="form-control content"></textarea>
         </div>
 
           <div class="form-group">
@@ -60,17 +60,14 @@
   </div>
 @stop
 
-@section('styles')
+{{--  @section('styles')
   <!-- summernote.css -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
-@stop
+@stop  --}}
 
 @section('scripts')
   <!-- summernote.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
-  <script type="text/javascript">
-    $('#content').summernote({
-      height: 100,
-    });
+  <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=mj6f5bbjybqupfl2yk8amrml742kqn8x0n82dxcsnwbahbqz"></script>
+  <script>tinymce.init({ selector:'textarea.content' });</script>
   </script>
 @stop

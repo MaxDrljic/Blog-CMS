@@ -155,8 +155,10 @@
 <script src="{{ asset('app/js/ScrollMagic.min.js') }}"></script>
 <script src="{{ asset('app/js/animation.velocity.min.js') }}"></script>
 
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c347d46d11963de"></script>
 
 <!-- ...end JS Script -->
+
 
 </body>
 </html>

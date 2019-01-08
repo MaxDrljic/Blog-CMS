@@ -11,6 +11,15 @@
 |
 */
 
+Route::post('/subscribe', function() {
+    $email = request('email');
+
+    Newsletter::subscribe($email);
+
+    toastr()->success('Successfully subscribed!');
+    return redirect()->back();    
+});
+
 Route::get('/', [
     'uses'  => 'FrontEndController@index',
     'as'    => 'index'

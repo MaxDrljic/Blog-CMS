@@ -58,7 +58,7 @@
         </div>
         <div class="form-group">
             <label for="content">Content</label>
-            <textarea name="content" id="content" cols="5" rows="5" class="form-control">{{ $post->content }}</textarea>
+            <textarea name="content" id="content" name="content" cols="5" rows="5" class="form-control content">{{ $post->content }}</textarea>
           </div>
 
           <div class="form-group">
@@ -69,4 +69,11 @@
       </form>
     </div>
   </div>
+@stop
+
+@section('scripts')
+  <!-- summernote.js -->
+  <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=mj6f5bbjybqupfl2yk8amrml742kqn8x0n82dxcsnwbahbqz"></script>
+  <script>tinymce.init({ selector:'textarea.content' });</script>
+  </script>
 @stop

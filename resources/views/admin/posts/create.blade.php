@@ -60,11 +60,6 @@
   </div>
 @stop
 
-{{--  @section('styles')
-  <!-- summernote.css -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
-@stop  --}}
-
 @section('scripts')
   <!-- summernote.js -->
   <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=mj6f5bbjybqupfl2yk8amrml742kqn8x0n82dxcsnwbahbqz"></script>
